@@ -59,22 +59,25 @@ while running:
     tick += 1
     if tick == 60:
         tick = 0
-    window.blit(backgroundImageScaled, (centerx(backgroundImageScaled.get_width()), 0))
-    if 0 <= tick < 30:
-        window.blit(titleText1, titleRect)
-    else:
-        window.blit(titleText2, titleRect)
+    
+    
     #text
     if not fileUploaded:
+        window.blit(backgroundImageScaled, (centerx(backgroundImageScaled.get_width()), 0))
         window.blit(drop,dRect)
         window.blit(file,fRect)
         window.blit(here,hRect)
         window.blit(deadFileImageScaled, (400, 200))
 
     if fileUploaded:
+        window.blit(happybackgroundImageScaled, (centerx(backgroundImageScaled.get_width()), 0))
         window.blit(aliveFileImageScaled, (400, 200))
         #do anime thing
-        pass
+        
+    if 0 <= tick < 30:
+        window.blit(titleText1, titleRect)
+    else:
+        window.blit(titleText2, titleRect)
 
     clock.tick(60)
     pygame.display.update()
