@@ -19,6 +19,8 @@ titleRect = titleText1.get_rect(center = (screenWidth/2, 128))
 
 backgroundImage = pygame.image.load("assets/tombstone.png")
 backgroundImageScaled = pygame.transform.scale_by(backgroundImage, 8.1)
+deadFileImage = pygame.image.load("deadfile.png")
+deadFileImageScaled = pygame.transform.scale_by(deadFileImage, 10)
 
 #drop file here 
 drop = pixeboySmall.render("drop", True, (255,255,255))

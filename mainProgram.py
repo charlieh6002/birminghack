@@ -64,6 +64,7 @@ while running:
     window.blit(drop,dRect)
     window.blit(file,fRect)
     window.blit(here,hRect)
+    window.blit(deadFileImageScaled, (500, 150))
 
     clock.tick(60)
     pygame.display.update()
