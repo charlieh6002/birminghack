@@ -5,11 +5,11 @@ def repairHeader(inPath, outPath, fileType):
     header = b'\x00\x00\x00\x00'
     if fileType == "png" or fileType == "pdf" or fileType == "jpeg" or fileType == "jfif" : 
         if fileType == "png":
-            header = b'\x25\x50\x44\x46'
-        elif fileType == "pdf":
             header = b'\x89\x50\x4E\x47'
+        elif fileType == "pdf":
+            header = b'\x25\x50\x44\x46'
         elif fileType == "jpeg" or fileType == "jfif":
-            header = b'\xFF\xD8\xFF\xE0'
+            header = b'\xFF\xD8\xFF\xE0' 
     else : 
         raise ValueError("Not a suppported fileType")
 
@@ -27,5 +27,5 @@ def repairHeader(inPath, outPath, fileType):
     print("Success!  file saved to: " + outPath)
 
 #need to work out if there is more problems:
-repairHeader("cat.png.url", "fixed1.png", "png")
+repairHeader("png-example.png", "fixed1.png", "png")
       
