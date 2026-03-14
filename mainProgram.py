@@ -47,7 +47,9 @@ def repair_pdf(input_path, output_path):
     except Exception as e:
         print("Repair failed:", e)
 
-repair_pdf(broken_file, "repaired_pdf.pdf")
+#repair_pdf(broken_file, "repaired_pdf.pdf")
+
+fileUploaded = False
 
 #------MAIN-LOOP------
 
@@ -61,9 +63,14 @@ while running:
     else:
         window.blit(titleText2, titleRect)
     #text
-    window.blit(drop,dRect)
-    window.blit(file,fRect)
-    window.blit(here,hRect)
+    if not fileUploaded:
+        window.blit(drop,dRect)
+        window.blit(file,fRect)
+        window.blit(here,hRect)
+
+    if fileUploaded:
+        #do anime thing
+        pass
 
     clock.tick(60)
     pygame.display.update()
