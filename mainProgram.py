@@ -1,5 +1,6 @@
 from config import *
-
+import pikepdf
+import os
 import pygame
 pygame.init()
 
@@ -27,6 +28,26 @@ def centery(y):
     extray = screenHeight - y
     newy = extray / 2
     return newy
+
+
+try:
+    new_file = open("leaderboard.txt", "r")
+    print("file opened")
+except FileNotFoundError:
+    new_file = open("leaderboard.txt", "x")
+    print("file created")
+broken_file = "pdf2.pdf"
+new_file.close()
+
+def repair_pdf(input_path, output_path):
+    try:
+        with pikepdf.open(input_path, allow_overwriting_input=True) as pdf:
+            pdf.save(output_path)
+        #print("Repaired PDF saved to:", output_path)
+    except Exception as e:
+        print("Repair failed:", e)
+
+repair_pdf(broken_file, "repaired_pdf.pdf")
 
 #------MAIN-LOOP------
 
