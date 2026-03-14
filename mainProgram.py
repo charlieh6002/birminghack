@@ -67,11 +67,11 @@ while running:
         window.blit(drop,dRect)
         window.blit(file,fRect)
         window.blit(here,hRect)
-        window.blit(deadFileImageScaled, (400, 200))
+        window.blit(deadFileImageScaled, (-50, 375))
 
     if fileUploaded:
         window.blit(happybackgroundImageScaled, (centerx(backgroundImageScaled.get_width()), 0))
-        window.blit(aliveFileImageScaled, (400, 200))
+        window.blit(aliveFileImageScaled, (120, 100))
         #do anime thing
         
     if 0 <= tick < 30:
