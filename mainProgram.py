@@ -29,21 +29,23 @@ def centery(y):
     newy = extray / 2
     return newy
 
-
-try:
-    new_file = open("repaired_pdf.pdf", "r")
-    print("file opened")
-except FileNotFoundError:
-    new_file = open("repaired_pdf.pdf", "x")
-    print("file created")
-broken_file = "broken1.pdf"
-new_file.close()
+if 0 == 1:
+    try:
+        new_file = open("repaired_pdf.pdf", "r")
+        print("file opened")
+    except FileNotFoundError:
+        new_file = open("repaired_pdf.pdf", "x")
+        print("file created")
+    broken_file = "broken1.pdf"
+    new_file.close()
 
 def repair_pdf(input_path, output_path):
     try:
+        new_file = open(output_path, "x")
         with pikepdf.open(input_path, allow_overwriting_input=True) as pdf:
             pdf.save(output_path)
         #print("Repaired PDF saved to:", output_path)
+        new_file.close()
     except Exception as e:
         print("Repair failed:", e)
 
@@ -67,8 +69,10 @@ while running:
         window.blit(drop,dRect)
         window.blit(file,fRect)
         window.blit(here,hRect)
+        window.blit(deadFileImageScaled, (400, 200))
 
     if fileUploaded:
+        window.blit(aliveFileImageScaled, (400, 200))
         #do anime thing
         pass
 
@@ -79,6 +83,11 @@ while running:
                 pass
             if event.type == pygame.DROPFILE:
                 corruptedFile = event.file
-                repair_pdf(corruptedFile, "repaired_pdf.pdf")
+                print(corruptedFile)
+                splitFile = corruptedFile.split("/")
+                newFileName = splitFile[len(splitFile) - 1]
+                newFileName = newFileName[:-4] + "-REPAIRED.pdf"
+                fileUploaded = True
+                repair_pdf(corruptedFile, newFileName)
             elif event.type == pygame.QUIT:
                 pygame.quit()
