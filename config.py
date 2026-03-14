@@ -1,5 +1,6 @@
 import pygame
 pygame.init()
+pygame.mixer.init()
 
 screenWidth = 1080
 screenHeight = 720
@@ -22,6 +23,11 @@ backgroundImageScaled = pygame.transform.scale_by(backgroundImage, 8.1)
 happybackgroundImage = pygame.image.load("assets/happytombstone.png")
 happybackgroundImageScaled = pygame.transform.scale_by(happybackgroundImage, 8.1)
 
+loadingImage1 = pygame.image.load("assets/loading1.png")
+l1Scaled = pygame.transform.scale_by(loadingImage1, 8.1)
+loadingImage2 = pygame.image.load("assets/loading2.png")
+l2Scaled = pygame.transform.scale_by(loadingImage2, 8.1)
+loadingRect = loadingImage1.get_rect(center = (screenWidth/2, screenHeight/2))
 
 deadFileImage = pygame.image.load("assets/deadfile.png")
 deadFileImageScaled = pygame.transform.scale_by(deadFileImage, 10)
@@ -38,3 +44,24 @@ hRect = here.get_rect(center = (screenWidth/2, screenHeight/2 + 32 + 128))
 
 nextFile = pixeboySmall.render("press enter to upload another file", True, (255,255,255))
 nextFileRect = nextFile.get_rect(center = (screenWidth/2, 600))
+
+#SOUNDS
+
+wowSound = pygame.mixer.Sound("assets/anime-wow-sound-effect.mp3")
+wowSound.set_volume(0.8)
+
+revivedSound = pygame.mixer.Sound("assets/fortnite-revive.mp3")
+revivedSound.set_volume(0.8)
+
+loadingSound = pygame.mixer.Sound("assets/loading.mp3")
+loadingSound.set_volume(0.8)
+
+sparkleSound = pygame.mixer.Sound("assets/sparkle.mp3")
+sparkleSound.set_volume(0.8)
+
+knockedSound = pygame.mixer.Sound("assets/knocked.mp3")
+knockedSound.set_volume(0.8)
+
+channel1 = pygame.mixer.Channel(0)
+channel2 = pygame.mixer.Channel(1)
+channel3 = pygame.mixer.Channel(2)

@@ -3,6 +3,7 @@ import pikepdf
 import os
 import pygame
 pygame.init()
+pygame.mixer.init()
 
 class Game:
 
@@ -51,7 +52,10 @@ def repair_pdf(input_path, output_path):
 
 #repair_pdf(broken_file, "repaired_pdf.pdf")
 
-fileUploaded = False
+screen = 1
+loadingTick = 0
+
+channel1.play
 
 #------MAIN-LOOP------
 
@@ -59,21 +63,40 @@ while running:
     tick += 1
     if tick == 60:
         tick = 0
-    
-    
+
+    if screen == 2:
+        loadingTick += 1
+        if loadingTick == 300:
+            screen = 3
+            channel1.play(wowSound)
+            channel2.play(revivedSound)
+            channel3.play(sparkleSound)
+        
     #text
-    if not fileUploaded:
+    if screen ==1:
         window.blit(backgroundImageScaled, (centerx(backgroundImageScaled.get_width()), 0))
         window.blit(drop,dRect)
         window.blit(file,fRect)
         window.blit(here,hRect)
         window.blit(deadFileImageScaled, (-50, 375))
 
-    if fileUploaded:
+    elif screen == 2:
+        #do loading screen
+        if 0 <= loadingTick < 30 or 60 <= loadingTick < 90:
+            window.blit(l1Scaled, (centerx(l1Scaled.get_width()), 0))
+        else:
+            window.blit(l2Scaled, (centerx(l2Scaled.get_width()), 0))
+
+
+    elif screen == 3:
         window.blit(happybackgroundImageScaled, (centerx(backgroundImageScaled.get_width()), 0))
         window.blit(aliveFileImageScaled, (120, 100))
-        #do anime thing
-        
+        window.blit(nextFile, nextFileRect)
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    channel1.play(knockedSound, 0, 3)
+                    screen = 1
     if 0 <= tick < 30:
         window.blit(titleText1, titleRect)
     else:
@@ -85,12 +108,13 @@ while running:
             if event.type == pygame.KEYDOWN: 
                 pass
             if event.type == pygame.DROPFILE:
+                channel1.play(loadingSound)
                 corruptedFile = event.file
                 print(corruptedFile)
                 splitFile = corruptedFile.split("/")
                 newFileName = splitFile[len(splitFile) - 1]
                 newFileName = newFileName[:-4] + "-REPAIRED.pdf"
-                fileUploaded = True
+                screen = 2
                 repair_pdf(corruptedFile, newFileName)
             elif event.type == pygame.QUIT:
                 pygame.quit()
