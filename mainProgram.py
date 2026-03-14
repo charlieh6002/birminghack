@@ -22,6 +22,8 @@ tick = 0
 
 while running:
 
+    window.blit(titleText, titleRect)
+
     clock.tick(60)
     pygame.display.update()
     for event in pygame.event.get(): #iterates through possible events
