@@ -26,6 +26,6 @@ def repairHeader(inPath, outPath, fileType):
 
     print("Success!  file saved to: " + outPath)
 
-#need to work out if there is more problems:
+#main program 
 repairHeader("png-example.png", "fixed1.png", "png")
       
