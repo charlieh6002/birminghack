@@ -66,7 +66,7 @@ while running:
 
     if screen == 2:
         loadingTick += 1
-        if loadingTick == 300:
+        if loadingTick == 210:
             screen = 3
             channel1.play(wowSound)
             channel2.play(revivedSound)
@@ -82,7 +82,7 @@ while running:
 
     elif screen == 2:
         #do loading screen
-        if 0 <= loadingTick < 30 or 60 <= loadingTick < 90:
+        if 0 <= loadingTick < 30 or 60 <= loadingTick < 90 or 120 <= loadingTick < 150 or 180 <= loadingTick  <210:
             window.blit(l1Scaled, (centerx(l1Scaled.get_width()), 0))
         else:
             window.blit(l2Scaled, (centerx(l2Scaled.get_width()), 0))
@@ -96,6 +96,7 @@ while running:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     channel1.play(knockedSound, 0, 3)
+                    loadingTick = 0
                     screen = 1
     if 0 <= tick < 30:
         window.blit(titleText1, titleRect)
