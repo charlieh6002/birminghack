@@ -35,10 +35,14 @@ while running:
     if tick == 60:
         tick = 0
     window.blit(backgroundImageScaled, (centerx(backgroundImageScaled.get_width()), 0))
-    if 0 <= tick < 10 or 20 <= tick < 30 or 40 <= tick < 50:
+    if 0 <= tick < 30:
         window.blit(titleText1, titleRect)
     else:
         window.blit(titleText2, titleRect)
+    #text
+    window.blit(drop,dRect)
+    window.blit(file,fRect)
+    window.blit(here,hRect)
 
     clock.tick(60)
     pygame.display.update()

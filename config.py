@@ -19,3 +19,11 @@ titleRect = titleText1.get_rect(center = (screenWidth/2, 128))
 
 backgroundImage = pygame.image.load("assets/tombstone.png")
 backgroundImageScaled = pygame.transform.scale_by(backgroundImage, 8.1)
+
+#drop file here 
+drop = pixeboySmall.render("drop", True, (255,255,255))
+file = pixeboySmall.render("file", True, (255,255,255))
+here = pixeboySmall.render("here", True, (255,255,255))
+dRect = drop.get_rect(center = (screenWidth/2, screenHeight/2 + 32))
+fRect = file.get_rect(center = (screenWidth/2, screenHeight/2 + 32 + 64))
+hRect = here.get_rect(center = (screenWidth/2, screenHeight/2 + 32 + 128))
