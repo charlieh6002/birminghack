@@ -1,7 +1,7 @@
 import pikepdf
 import os
 
-broken_file = "broken1.pdf"
+broken_file = "pdf2.pdf"
 os.remove("repaired_pdf.pdf")
 new_file = open("repaired_pdf.pdf", "x")
 new_file.close()
