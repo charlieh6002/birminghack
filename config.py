@@ -12,7 +12,10 @@ pixeboySmall = pygame.font.Font("assets/Pixeboy.ttf", 50)
 
 #images
 
-#title text
+#title 
+titleText1 = pixeboyMedium.render("file ressurector", True, (255,255,255))
+titleText2 = pixeboyMedium.render("file ressurector", True, (100,100,100))
+titleRect = titleText1.get_rect(center = (screenWidth/2, 128))
 
-titleText = pixeboyMedium.render("file ressurector yay", True, (255,255,255))
-titleRect = titleText.get_rect(center = (screenWidth/2, screenHeight/2))
+backgroundImage = pygame.image.load("assets/tombstone.png")
+backgroundImageScaled = pygame.transform.scale_by(backgroundImage, 8.1)
