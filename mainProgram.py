@@ -31,12 +31,12 @@ def centery(y):
 
 
 try:
-    new_file = open("leaderboard.txt", "r")
+    new_file = open("repaired_pdf.pdf", "r")
     print("file opened")
 except FileNotFoundError:
-    new_file = open("leaderboard.txt", "x")
+    new_file = open("repaired_pdf.pdf", "x")
     print("file created")
-broken_file = "pdf2.pdf"
+broken_file = "broken1.pdf"
 new_file.close()
 
 def repair_pdf(input_path, output_path):
@@ -70,5 +70,8 @@ while running:
     for event in pygame.event.get(): #iterates through possible events
             if event.type == pygame.KEYDOWN: 
                 pass
+            if event.type == pygame.DROPFILE:
+                corruptedFile = event.file
+                repair_pdf(corruptedFile, "repaired_pdf.pdf")
             elif event.type == pygame.QUIT:
                 pygame.quit()
