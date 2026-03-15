@@ -16,7 +16,7 @@ pixeboySmall = pygame.font.Font("assets/Pixeboy.ttf", 50)
 #title 
 titleText1 = pixeboyMedium.render("pdf resurrector", True, (255,255,255))
 titleText2 = pixeboyMedium.render("pdf resurrector", True, (100,100,100))
-titleRect = titleText1.get_rect(center = (screenWidth/2, 128))
+titleRect = titleText1.get_rect(center = (screenWidth/2, 64))
 
 backgroundImage = pygame.image.load("assets/tombstone.png")
 backgroundImageScaled = pygame.transform.scale_by(backgroundImage, 8.1)
@@ -44,6 +44,26 @@ hRect = here.get_rect(center = (screenWidth/2, screenHeight/2 + 32 + 128))
 
 nextFile = pixeboySmall.render("press enter to upload another file", True, (255,255,255))
 nextFileRect = nextFile.get_rect(center = (screenWidth/2, 600))
+
+#BUTTONS
+
+jpeg = pixeboySmall.render("jpeg", True, (255,255,255))
+jfif = pixeboySmall.render("jfif", True, (255,255,255))
+png = pixeboySmall.render("png", True, (255,255,255))
+pdf = pixeboySmall.render("pdf", True, (255,255,255))
+jpegTextRect = jpeg.get_rect(center = (216, 160))
+jfifTextRect = jfif.get_rect(center = (432, 160))
+pngTextRect = png.get_rect(center = (648, 160))
+pdfTextRect = pdf.get_rect(center = (864, 160))
+
+jpegRect = pygame.rect.Rect(216, 128, 200, 64)
+jpegRect.center = (216, 160)
+jfifRect = pygame.rect.Rect(432, 128, 200, 64)
+jfifRect.center = (432, 160)
+pngRect = pygame.rect.Rect(648, 128, 200, 64)
+pngRect.center = (648, 160)
+pdfRect = pygame.rect.Rect(864, 128, 200, 64)
+pdfRect.center = (864, 160)
 
 #SOUNDS
 
