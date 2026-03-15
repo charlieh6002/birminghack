@@ -135,11 +135,17 @@ while running:
             if event.type == pygame.DROPFILE:
                 channel1.play(loadingSound)
                 corruptedFile = event.file
-                #print(corruptedFile)
                 splitFile = corruptedFile.split("/") #filename.filetype 
+                #IN PROGRESSS
+                for i in splitFile:
+                    print(i)
+
                 newFileName = splitFile[len(splitFile) - 1] 
+                print(newFileName)
                 corruptFileType = newFileName[1] 
                 newFileName = newFileName[:-4] + "-REPAIRED." + corruptFileType
+                print("File Type: '" + corruptFileType + "'")
+                print("File Name: '" + newFileName + "'")
                 repairHeader(corruptedFile, newFileName, corruptFileType)
                 screen = 2
                 #repair_pdf(corruptedFile, newFileName)
