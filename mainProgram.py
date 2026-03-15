@@ -176,6 +176,17 @@ while running:
                 newFileName =  os.path.basename(corruptedFile)
                 newFileName, corruptFileType = os.path.splitext(newFileName)
                 corruptFileType = corruptFileType[1:]
+                newFileName = newFileName[:-4] + "-REPAIRED." + corruptFileType
+
+                #gets the users downloads path 
+                homeDir = os.path.expanduser("~")
+                downloadsPath = os.path.join(homeDir, "Downloads")
+                newFilePath = os.path.join(downloadsPath, newFileName)
+
+                #testing
+                print("file name:" + newFileName)
+                print("file path:" + newFilePath)
+                print("file type:" + corruptFileType)
                 
                 #splitFile = corruptedFile.split("/") #filename.filetype 
                 #IN PROGRESSS
@@ -187,10 +198,11 @@ while running:
                 #newFileName = newFileName[:-4] + "-REPAIRED." + corruptFileType
                 #print("File Type: '" + corruptFileType + "'")
                 #print("File Name: '" + newFileName + "'")
-                repairHeader(corruptedFile, newFileName, corruptFileType)
+                repairHeader(corruptedFile, newFilePath, corruptFileType)
                 screen = 2
                 #repair_pdf(corruptedFile, newFileName)
             elif event.type == pygame.QUIT:
+                pygame.display.quit()
                 pygame.quit()
 
 
