@@ -177,7 +177,7 @@ while running:
                 newFileName =  os.path.basename(corruptedFile)
                 newFileName, corruptFileType = os.path.splitext(newFileName)
                 corruptFileType = corruptFileType[1:]
-                newFileName = newFileName[:-4] + "-REPAIRED." + corruptFileType
+                newFileName = newFileName + "-REPAIRED." + corruptFileType
 
                 #gets the users downloads path 
                 homeDir = os.path.expanduser("~")
