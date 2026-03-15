@@ -50,6 +50,20 @@ def centery(y):
 #    except Exception as e:
 #        print("Repair failed:", e)
 
+def getButtonPressed(pos):
+    cursorRect = pygame.rect.Rect(pos[0]-5, pos[1]-5, 10, 10)
+    if (cursorRect.colliderect(jpegRect)):
+        return 1
+    elif (cursorRect.colliderect(jfifRect)):
+        return 2
+    elif (cursorRect.colliderect(pngRect)):
+        return 3
+    elif (cursorRect.colliderect(pdfRect)):
+        return 4
+    else:
+        return 0
+    
+
 #repair_pdf(broken_file, "repaired_pdf.pdf")
 
 def repairHeader(inPath, outPath, fileType):
@@ -79,7 +93,7 @@ def repairHeader(inPath, outPath, fileType):
 
 screen = 1
 loadingTick = 0
-
+selected = 0
 channel1.play
 
 #------MAIN-LOOP------
@@ -104,6 +118,30 @@ while running:
         window.blit(file,fRect)
         window.blit(here,hRect)
         window.blit(deadFileImageScaled, (-50, 375))
+
+        pygame.draw.rect(window, (120,120,120), jpegRect)
+        pygame.draw.rect(window, (120,120,120), jfifRect)
+        pygame.draw.rect(window, (120,120,120), pngRect)
+        pygame.draw.rect(window, (120,120,120), pdfRect)
+
+        if selected == 1:
+            pygame.draw.rect(window, (84,84,84), jpegRect)
+        elif selected == 2:
+            pygame.draw.rect(window, (84,84,84), jfifRect)
+        elif selected == 3:
+            pygame.draw.rect(window, (84,84,84), pngRect)
+        elif selected == 4:
+            pygame.draw.rect(window, (84,84,84), pdfRect)
+
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                pos = pygame.mouse.get_pos()
+                selected = getButtonPressed(pos)
+
+        window.blit(jpeg, jpegTextRect)
+        window.blit(jfif, jfifTextRect)
+        window.blit(png, pngTextRect)
+        window.blit(pdf, pdfTextRect)
 
     elif screen == 2:
         #do loading screen
